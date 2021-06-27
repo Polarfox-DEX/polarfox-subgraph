@@ -1,6 +1,6 @@
 # Polarfox Subgraph
 
-An open source subgraph index for Polarfox -- a community-driven decentralized exchange for Avalanche and Ethereum assets with fast settlement, low transaction fees, and a democratic distribution -- powered by Avalanche.
+An open source subgraph index for the Polarfox DEX.
 
 This subgraph dynamically tracks any pair created by the Polarfox factory. It tracks the current state of Polarfox contracts, and contains derived stats for things like historical data.
 
