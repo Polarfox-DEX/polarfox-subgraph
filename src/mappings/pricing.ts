@@ -4,7 +4,7 @@ import { BigDecimal, Address, BigInt } from '@graphprotocol/graph-ts/index'
 import { ZERO_BD, factoryContract, ADDRESS_ZERO, ONE_BD } from './helpers'
 import { log } from '@graphprotocol/graph-ts'
 
-const WAVAX_ADDRESS = '0xd00ae08403B9bbb9124bB305C09058E32C39A48c'
+const WAVAX_ADDRESS = '0xd00ae08403b9bbb9124bb305c09058e32c39a48c'
 // const DAI_WAVAX_PAIR = '' // created block xxx
 // const USDC_WAVAX_PAIR = '' // created block xxx
 const USDT_WAVAX_PAIR = '0x6fa3df2d2c73e47010497fdcae3ec2773a4f8dbb' // created block 362535
