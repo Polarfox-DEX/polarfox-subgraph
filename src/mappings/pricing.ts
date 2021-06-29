@@ -7,7 +7,7 @@ import { log } from '@graphprotocol/graph-ts'
 const WAVAX_ADDRESS = '0xd00ae08403B9bbb9124bB305C09058E32C39A48c'
 // const DAI_WAVAX_PAIR = '' // created block xxx
 // const USDC_WAVAX_PAIR = '' // created block xxx
-const USDT_WAVAX_PAIR = '0x6fa3DF2D2C73E47010497FdcaE3ec2773A4f8dbB' // created block 362535
+const USDT_WAVAX_PAIR = '0x6fa3df2d2c73e47010497fdcae3ec2773a4f8dbb' // created block 362535
 
 export function getAvaxPriceInUSD(): BigDecimal {
   // Fetch AVAX price for USDT
@@ -59,11 +59,11 @@ export function getAvaxPriceInUSD(): BigDecimal {
 // Token where amounts should contribute to tracked volume and liquidity
 let WHITELIST: string[] = [
   WAVAX_ADDRESS, // WAVAX
-  '0xAA9344D903ef9034612e8221C0e0eF3B744A42BF', // PFX
-  '0x598d84C62B6a9Af2FcF6DA1D9Bff52f9dd7D8226', // WETH
-  '0x8E18dEF819C5C50937e883dD9ecc5B6783224aC7', // USDT
-  '0xFf2Ebd79c0948C8fE69b96434915ABC03Ebb5c37', // AKITA
-  '0x8BAb1Be3571a54e8dB6b975eb39ceDE251A1C6dF' // gAKITA
+  '0xaa9344d903ef9034612e8221c0e0ef3b744a42bf', // PFX
+  '0x598d84c62b6a9af2fcf6da1d9bff52f9dd7d8226', // WETH
+  '0x8e18def819c5c50937e883dd9ecc5b6783224ac7', // USDT
+  '0xff2ebd79c0948c8fe69b96434915abc03ebb5c37', // AKITA
+  '0x8bab1be3571a54e8db6b975eb39cede251a1c6df' // gAKITA
 ]
 
 // minimum liquidity required to count towards tracked volume for pairs with small # of Lps
