@@ -7,8 +7,8 @@ import { User, Bundle, Token, LiquidityPosition, LiquidityPositionSnapshot, Pair
 import { Factory as FactoryContract } from '../types/templates/Pair/Factory'
 
 export const ADDRESS_ZERO = '0x0000000000000000000000000000000000000000'
-export const FACTORY_ADDRESS = '0x3c2f50a7232a960d6d5ece9c1583b3bec6c23663'
-export const ROUTER_ADDRESS = '0xe84f91a624d4625a7ace364d1e2564efa735db21'
+export const FACTORY_ADDRESS = '0xdb7d8719a03d02fc7595803f8365e3fa3364fce5'
+export const ROUTER_ADDRESS = '0x558f42ba48a31d9a5646217ea261427878dcf845'
 
 export let ZERO_BI = BigInt.fromI32(0)
 export let ONE_BI = BigInt.fromI32(1)
@@ -126,7 +126,7 @@ export function fetchTokenTotalSupply(tokenAddress: Address): BigInt {
 
 export function fetchTokenDecimals(tokenAddress: Address): BigInt {
   // hardcode overrides
-  if (tokenAddress.toHexString() == '0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9') {
+  if (tokenAddress.toHexString() == '0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9') { // TODO Remove?
     return BigInt.fromI32(18)
   }
 

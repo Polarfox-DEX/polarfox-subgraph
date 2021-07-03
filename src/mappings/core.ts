@@ -28,14 +28,14 @@ import {
 } from './helpers'
 
 let MINING_POOLS: string[] = [
-  '0x5cb5756c1403e49db7c12a94ceb21322b665a8e1', // v1 PFX/AVAX → PFX
-  '0xef9c6c8417f1745353b723ea27e30d232e2e0887', // v1 PFX/WETH → PFX
-  '0x0e64274785686c4e9d538944d591c2fb08a5e59d', // v1 PFX/USDT → PFX
-  '0x2d97036c126c89b93cb27ae122680fcba653cbeb', // v1 AVAX/WETH → PFX
-  '0x5fa9d9ed86ea07793b2a733c7d3b54b0726b28fd', // v1 AVAX/USDT → PFX
+  '0xa1ae93d4c9c4271297653cf654d0b4d5105d8251', // v1 PFX/AVAX → PFX
+  '0xcfb90b451d0f2ff417820d3a79b95f12ee001e03', // v1 PFX/WETH → PFX
+  '0x25a3887a3faf119aa6420268305db0aafbe31b12', // v1 PFX/USDT → PFX
+  '0x3e6b8a36bf6de077bbba89d93f3cd6b7dba6acc4', // v1 AVAX/WETH → PFX
+  '0xc1ddc5a427465ffb913cf247a92dde84443a252d', // v1 AVAX/USDT → PFX
 
-  '0x86ff3c7261fba8a3211ab657e18a532413abbaca', // v1 AKITA/PFX → gAKITA
-  '0x8d56f76cedbf5fe08bf9ae6d42ddedb25d58913a' // v1 AKITA/AVAX → gAKITA
+  '0xcb9bd879f44b00b3223ebc2347aa7c97b470c3a5', // v1 AKITA/PFX → gAKITA
+  '0x0a6e5bfe21b7612f1841e4956e7964a8ae8380e7' // v1 AKITA/AVAX → gAKITA
 ]
 
 function isCompleteMint(mintId: string): boolean {
@@ -238,7 +238,7 @@ export function handleSync(event: Sync): void {
   let token1 = Token.load(pair.token1)
   let polarfox = PolarfoxFactory.load(FACTORY_ADDRESS)
 
-  // reset factory liquidity by subtracting onluy tarcked liquidity
+  // reset factory liquidity by subtracting only tracked liquidity
   polarfox.totalLiquidityAVAX = polarfox.totalLiquidityAVAX.minus(pair.trackedReserveAVAX as BigDecimal)
 
   // reset token total liquidity amounts

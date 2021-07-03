@@ -7,7 +7,7 @@ import { log } from '@graphprotocol/graph-ts'
 const WAVAX_ADDRESS = '0xd00ae08403b9bbb9124bb305c09058e32c39a48c'
 // const DAI_WAVAX_PAIR = '' // created block xxx
 // const USDC_WAVAX_PAIR = '' // created block xxx
-const USDT_WAVAX_PAIR = '0x6fa3df2d2c73e47010497fdcae3ec2773a4f8dbb' // created block 362535
+const USDT_WAVAX_PAIR = '0x87b850d7d852c95f032d9a30d438099b5766458c' // created block 385xxx
 
 export function getAvaxPriceInUSD(): BigDecimal {
   // Fetch AVAX price for USDT
@@ -63,7 +63,7 @@ let WHITELIST: string[] = [
   '0x598d84c62b6a9af2fcf6da1d9bff52f9dd7d8226', // WETH
   '0x8e18def819c5c50937e883dd9ecc5b6783224ac7', // USDT
   '0xff2ebd79c0948c8fe69b96434915abc03ebb5c37', // AKITA
-  '0x8bab1be3571a54e8db6b975eb39cede251a1c6df' // gAKITA
+  '0x2e5bc8f65d804c2e6352cf372fbacbaa9e7f51ae' // gAKITA
 ]
 
 // minimum liquidity required to count towards tracked volume for pairs with small # of Lps
@@ -112,10 +112,11 @@ export function getTrackedVolumeUSD(
   pair: Pair
 ): BigDecimal {
   let bundle = Bundle.load('1')
+  // Prices in USD
   let price0 = token0.derivedAVAX.times(bundle.avaxPrice)
   let price1 = token1.derivedAVAX.times(bundle.avaxPrice)
 
-  // if less than 5 LPs, require high minimum reserve amount amount or return 0
+  // if less than 5 LPs, require high minimum reserve amount or return 0
   if (pair.liquidityProviderCount.lt(BigInt.fromI32(5))) {
     let reserve0USD = pair.reserve0.times(price0)
     let reserve1USD = pair.reserve1.times(price1)
@@ -166,10 +167,11 @@ export function getTrackedVolumeUSD(
  */
 export function getTrackedLiquidityUSD(tokenAmount0: BigDecimal, token0: Token, tokenAmount1: BigDecimal, token1: Token): BigDecimal {
   let bundle = Bundle.load('1')
+  // Prices in USD
   let price0 = token0.derivedAVAX.times(bundle.avaxPrice)
   let price1 = token1.derivedAVAX.times(bundle.avaxPrice)
 
-  // both are whitelist tokens, take average of both amounts
+  // both are whitelisted tokens, take average of both amounts
   if (WHITELIST.includes(token0.id) && WHITELIST.includes(token1.id)) {
     return tokenAmount0.times(price0).plus(tokenAmount1.times(price1))
   }
