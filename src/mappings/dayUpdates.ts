@@ -46,6 +46,7 @@ export function updatePairDayData(event: EthereumEvent): PairDayData {
     pairDayData.pairAddress = event.address
     pairDayData.dailyVolumeToken0 = ZERO_BD
     pairDayData.dailyVolumeToken1 = ZERO_BD
+    pairDayData.dailyVolumeAVAX = ZERO_BD
     pairDayData.dailyVolumeUSD = ZERO_BD
     pairDayData.dailyTxns = ZERO_BI
   }
@@ -53,6 +54,7 @@ export function updatePairDayData(event: EthereumEvent): PairDayData {
   pairDayData.totalSupply = pair.totalSupply
   pairDayData.reserve0 = pair.reserve0
   pairDayData.reserve1 = pair.reserve1
+  pairDayData.reserveAVAX = pair.reserveAVAX
   pairDayData.reserveUSD = pair.reserveUSD
   pairDayData.dailyTxns = pairDayData.dailyTxns.plus(ONE_BI)
   pairDayData.save()
@@ -76,12 +78,14 @@ export function updatePairHourData(event: EthereumEvent): PairHourData {
     pairHourData.pair = event.address.toHexString()
     pairHourData.hourlyVolumeToken0 = ZERO_BD
     pairHourData.hourlyVolumeToken1 = ZERO_BD
+    pairHourData.hourlyVolumeAVAX = ZERO_BD
     pairHourData.hourlyVolumeUSD = ZERO_BD
     pairHourData.hourlyTxns = ZERO_BI
   }
 
   pairHourData.reserve0 = pair.reserve0
   pairHourData.reserve1 = pair.reserve1
+  pairHourData.reserveAVAX = pair.reserveAVAX
   pairHourData.reserveUSD = pair.reserveUSD
   pairHourData.hourlyTxns = pairHourData.hourlyTxns.plus(ONE_BI)
   pairHourData.save()

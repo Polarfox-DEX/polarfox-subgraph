@@ -183,10 +183,13 @@ export function createLiquiditySnapshot(position: LiquidityPosition, event: Ethe
   snapshot.block = event.block.number.toI32()
   snapshot.user = position.user
   snapshot.pair = position.pair
+  snapshot.token0PriceAVAX = token0.derivedAVAX.times(ONE_BD)
+  snapshot.token1PriceAVAX = token1.derivedAVAX.times(ONE_BD)
   snapshot.token0PriceUSD = token0.derivedAVAX.times(bundle.avaxPrice)
   snapshot.token1PriceUSD = token1.derivedAVAX.times(bundle.avaxPrice)
   snapshot.reserve0 = pair.reserve0
   snapshot.reserve1 = pair.reserve1
+  snapshot.reserveAVAX = pair.reserveAVAX
   snapshot.reserveUSD = pair.reserveUSD
   snapshot.liquidityTokenTotalSupply = pair.totalSupply
   snapshot.liquidityTokenBalance = position.liquidityTokenBalance

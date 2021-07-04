@@ -545,12 +545,14 @@ export function handleSwap(event: Swap): void {
   // swap specific updating for pair
   pairDayData.dailyVolumeToken0 = pairDayData.dailyVolumeToken0.plus(amount0Total)
   pairDayData.dailyVolumeToken1 = pairDayData.dailyVolumeToken1.plus(amount1Total)
+  pairDayData.dailyVolumeAVAX = pairDayData.dailyVolumeAVAX.plus(trackedAmountAVAX)
   pairDayData.dailyVolumeUSD = pairDayData.dailyVolumeUSD.plus(trackedAmountUSD)
   pairDayData.save()
 
   // update hourly pair data
   pairHourData.hourlyVolumeToken0 = pairHourData.hourlyVolumeToken0.plus(amount0Total)
   pairHourData.hourlyVolumeToken1 = pairHourData.hourlyVolumeToken1.plus(amount1Total)
+  pairHourData.hourlyVolumeAVAX = pairHourData.hourlyVolumeAVAX.plus(trackedAmountAVAX)
   pairHourData.hourlyVolumeUSD = pairHourData.hourlyVolumeUSD.plus(trackedAmountUSD)
   pairHourData.save()
 

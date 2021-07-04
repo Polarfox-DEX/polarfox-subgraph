@@ -116,10 +116,13 @@ type LiquidityPositionSnapshot @entity {
   block: Int! # saved for fast historical lookups
   user: User! # reference to user
   pair: Pair! # reference to pair
-  token0PriceUSD: BigDecimal! # snapshot of token0 price
-  token1PriceUSD: BigDecimal! # snapshot of token1 price
+  token0PriceAVAX: BigDecimal! # snapshot of token0 price in AVAX
+  token1PriceAVAX: BigDecimal! # snapshot of token1 price in AVAX
+  token0PriceUSD: BigDecimal! # snapshot of token0 price in USD
+  token1PriceUSD: BigDecimal! # snapshot of token1 price in USD
   reserve0: BigDecimal! # snapshot of pair token0 reserves
   reserve1: BigDecimal! # snapshot of pair token1 reserves
+  reserveAVAX: BigDecimal! # snapshot of pair reserves in AVAX
   reserveUSD: BigDecimal! # snapshot of pair reserves in USD
   liquidityTokenTotalSupply: BigDecimal! # snapshot of pool token supply
   liquidityTokenBalance: BigDecimal! # snapshot of users pool token balance
@@ -241,11 +244,13 @@ type PairHourData @entity {
   reserve1: BigDecimal!
 
   # derived liquidity
+  reserveAVAX: BigDecimal!
   reserveUSD: BigDecimal!
 
   # volume stats
   hourlyVolumeToken0: BigDecimal!
   hourlyVolumeToken1: BigDecimal!
+  hourlyVolumeAVAX: BigDecimal!
   hourlyVolumeUSD: BigDecimal!
   hourlyTxns: BigInt!
 }
@@ -266,11 +271,13 @@ type PairDayData @entity {
   totalSupply: BigDecimal!
 
   # derived liquidity
+  reserveAVAX: BigDecimal!
   reserveUSD: BigDecimal!
 
   # volume stats
   dailyVolumeToken0: BigDecimal!
   dailyVolumeToken1: BigDecimal!
+  dailyVolumeAVAX: BigDecimal!
   dailyVolumeUSD: BigDecimal!
   dailyTxns: BigInt!
 }
