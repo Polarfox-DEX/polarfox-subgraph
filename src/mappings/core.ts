@@ -458,11 +458,13 @@ export function handleSwap(event: Swap): void {
 
   // update token0 global volume and token liquidity stats
   token0.tradeVolume = token0.tradeVolume.plus(amount0In.plus(amount0Out))
+  token0.tradeVolumeAVAX = token0.tradeVolumeAVAX.plus(trackedAmountAVAX)
   token0.tradeVolumeUSD = token0.tradeVolumeUSD.plus(trackedAmountUSD)
   token0.untrackedVolumeUSD = token0.untrackedVolumeUSD.plus(derivedAmountUSD)
 
   // update token1 global volume and token liquidity stats
   token1.tradeVolume = token1.tradeVolume.plus(amount1In.plus(amount1Out))
+  token1.tradeVolumeAVAX = token1.tradeVolumeAVAX.plus(trackedAmountAVAX)
   token1.tradeVolumeUSD = token1.tradeVolumeUSD.plus(trackedAmountUSD)
   token1.untrackedVolumeUSD = token1.untrackedVolumeUSD.plus(derivedAmountUSD)
 
@@ -471,6 +473,7 @@ export function handleSwap(event: Swap): void {
   token1.txCount = token1.txCount.plus(ONE_BI)
 
   // update pair volume data, use tracked amount if we have it as its probably more accurate
+  pair.volumeAVAX = pair.volumeAVAX.plus(trackedAmountAVAX)
   pair.volumeUSD = pair.volumeUSD.plus(trackedAmountUSD)
   pair.volumeToken0 = pair.volumeToken0.plus(amount0Total)
   pair.volumeToken1 = pair.volumeToken1.plus(amount1Total)
