@@ -314,9 +314,10 @@ export function handleMint(event: Mint): void {
 
   // get new amounts of USD and AVAX for tracking
   let bundle = Bundle.load('1')
-  let amountTotalUSD = token1.derivedAVAX
+  let amountTotalAVAX = token1.derivedAVAX
     .times(token1Amount)
     .plus(token0.derivedAVAX.times(token0Amount))
+  let amountTotalUSD = amountTotalAVAX
     .times(bundle.avaxPrice)
 
   // update txn counts
@@ -333,6 +334,7 @@ export function handleMint(event: Mint): void {
   mint.amount0 = token0Amount as BigDecimal
   mint.amount1 = token1Amount as BigDecimal
   mint.logIndex = event.logIndex
+  mint.amountAVAX = amountTotalAVAX as BigDecimal
   mint.amountUSD = amountTotalUSD as BigDecimal
   mint.save()
 
@@ -374,9 +376,10 @@ export function handleBurn(event: Burn): void {
 
   // get new amounts of USD and AVAX for tracking
   let bundle = Bundle.load('1')
-  let amountTotalUSD = token1.derivedAVAX
+  let amountTotalAVAX = token1.derivedAVAX
     .times(token1Amount)
     .plus(token0.derivedAVAX.times(token0Amount))
+  let amountTotalUSD = amountTotalAVAX
     .times(bundle.avaxPrice)
 
   // update txn counts
@@ -395,6 +398,7 @@ export function handleBurn(event: Burn): void {
   burn.amount1 = token1Amount as BigDecimal
   // burn.to = event.params.to
   burn.logIndex = event.logIndex
+  burn.amountAVAX = amountTotalAVAX as BigDecimal
   burn.amountUSD = amountTotalUSD as BigDecimal
   burn.save()
 
@@ -518,6 +522,7 @@ export function handleSwap(event: Swap): void {
   swap.from = event.transaction.from
   swap.logIndex = event.logIndex
   // use the tracked amount if we have it
+  swap.amountAVAX = trackedAmountAVAX === ZERO_BD ? derivedAmountAVAX : trackedAmountAVAX
   swap.amountUSD = trackedAmountUSD === ZERO_BD ? derivedAmountUSD : trackedAmountUSD
   swap.save()
 
