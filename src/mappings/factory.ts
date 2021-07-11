@@ -14,6 +14,7 @@ export function handleNewPair(event: PairCreated): void {
     factory.totalVolumeAVAX = ZERO_BD
     factory.totalLiquidityAVAX = ZERO_BD
     factory.totalVolumeUSD = ZERO_BD
+    factory.untrackedVolumeAVAX = ZERO_BD
     factory.untrackedVolumeUSD = ZERO_BD
     factory.totalLiquidityUSD = ZERO_BD
     factory.txCount = ZERO_BI
@@ -48,6 +49,7 @@ export function handleNewPair(event: PairCreated): void {
     token0.tradeVolume = ZERO_BD
     token0.tradeVolumeAVAX = ZERO_BD
     token0.tradeVolumeUSD = ZERO_BD
+    token0.untrackedVolumeAVAX = ZERO_BD
     token0.untrackedVolumeUSD = ZERO_BD
     token0.totalLiquidity = ZERO_BD
     // token0.allPairs = []
@@ -71,6 +73,7 @@ export function handleNewPair(event: PairCreated): void {
     token1.tradeVolume = ZERO_BD
     token1.tradeVolumeAVAX = ZERO_BD
     token1.tradeVolumeUSD = ZERO_BD
+    token1.untrackedVolumeAVAX = ZERO_BD
     token1.untrackedVolumeUSD = ZERO_BD
     token1.totalLiquidity = ZERO_BD
     // token1.allPairs = []
@@ -94,6 +97,7 @@ export function handleNewPair(event: PairCreated): void {
   pair.volumeToken1 = ZERO_BD
   pair.volumeAVAX = ZERO_BD
   pair.volumeUSD = ZERO_BD
+  pair.untrackedVolumeAVAX = ZERO_BD
   pair.untrackedVolumeUSD = ZERO_BD
   pair.token0Price = ZERO_BD
   pair.token1Price = ZERO_BD

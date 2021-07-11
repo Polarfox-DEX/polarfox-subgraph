@@ -460,12 +460,14 @@ export function handleSwap(event: Swap): void {
   token0.tradeVolume = token0.tradeVolume.plus(amount0In.plus(amount0Out))
   token0.tradeVolumeAVAX = token0.tradeVolumeAVAX.plus(trackedAmountAVAX)
   token0.tradeVolumeUSD = token0.tradeVolumeUSD.plus(trackedAmountUSD)
+  token0.untrackedVolumeAVAX = token0.untrackedVolumeAVAX.plus(derivedAmountAVAX)
   token0.untrackedVolumeUSD = token0.untrackedVolumeUSD.plus(derivedAmountUSD)
 
   // update token1 global volume and token liquidity stats
   token1.tradeVolume = token1.tradeVolume.plus(amount1In.plus(amount1Out))
   token1.tradeVolumeAVAX = token1.tradeVolumeAVAX.plus(trackedAmountAVAX)
   token1.tradeVolumeUSD = token1.tradeVolumeUSD.plus(trackedAmountUSD)
+  token1.untrackedVolumeAVAX = token1.untrackedVolumeAVAX.plus(derivedAmountAVAX)
   token1.untrackedVolumeUSD = token1.untrackedVolumeUSD.plus(derivedAmountUSD)
 
   // update txn counts
@@ -477,6 +479,7 @@ export function handleSwap(event: Swap): void {
   pair.volumeUSD = pair.volumeUSD.plus(trackedAmountUSD)
   pair.volumeToken0 = pair.volumeToken0.plus(amount0Total)
   pair.volumeToken1 = pair.volumeToken1.plus(amount1Total)
+  pair.untrackedVolumeAVAX = pair.untrackedVolumeAVAX.plus(derivedAmountAVAX)
   pair.untrackedVolumeUSD = pair.untrackedVolumeUSD.plus(derivedAmountUSD)
   pair.txCount = pair.txCount.plus(ONE_BI)
   pair.save()
@@ -485,6 +488,7 @@ export function handleSwap(event: Swap): void {
   let polarfox = PolarfoxFactory.load(FACTORY_ADDRESS)
   polarfox.totalVolumeUSD = polarfox.totalVolumeUSD.plus(trackedAmountUSD)
   polarfox.totalVolumeAVAX = polarfox.totalVolumeAVAX.plus(trackedAmountAVAX)
+  polarfox.untrackedVolumeAVAX = polarfox.untrackedVolumeAVAX.plus(derivedAmountAVAX)
   polarfox.untrackedVolumeUSD = polarfox.untrackedVolumeUSD.plus(derivedAmountUSD)
   polarfox.txCount = polarfox.txCount.plus(ONE_BI)
 

@@ -10,6 +10,7 @@ type PolarfoxFactory @entity {
   totalVolumeAVAX: BigDecimal!
 
   # untracked values - less confident USD scores
+  untrackedVolumeAVAX: BigDecimal!
   untrackedVolumeUSD: BigDecimal!
 
   # total liquidity
@@ -36,6 +37,7 @@ type Token @entity {
   tradeVolume: BigDecimal!
   tradeVolumeAVAX: BigDecimal!
   tradeVolumeUSD: BigDecimal!
+  untrackedVolumeAVAX: BigDecimal!
   untrackedVolumeUSD: BigDecimal!
 
   # transactions across all pairs
@@ -79,6 +81,7 @@ type Pair @entity {
   volumeToken1: BigDecimal!
   volumeAVAX: BigDecimal!
   volumeUSD: BigDecimal!
+  untrackedVolumeAVAX: BigDecimal!
   untrackedVolumeUSD: BigDecimal!
   txCount: BigInt!
 
@@ -304,5 +307,6 @@ type TokenDayData @entity {
   totalLiquidityUSD: BigDecimal!
 
   # price stats
+  priceAVAX: BigDecimal!
   priceUSD: BigDecimal!
 }

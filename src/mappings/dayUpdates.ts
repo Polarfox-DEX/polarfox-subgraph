@@ -2,7 +2,7 @@ import { PairHourData } from './../types/schema'
 /* eslint-disable prefer-const */
 import { BigInt, BigDecimal, EthereumEvent } from '@graphprotocol/graph-ts'
 import { Pair, Bundle, Token, PolarfoxFactory, PolarfoxDayData, PairDayData, TokenDayData } from '../types/schema'
-import { ONE_BI, ZERO_BD, ZERO_BI, FACTORY_ADDRESS } from './helpers'
+import { ONE_BD, ONE_BI, ZERO_BD, ZERO_BI, FACTORY_ADDRESS } from './helpers'
 
 export function updatePolarfoxDayData(event: EthereumEvent): PolarfoxDayData {
   let polarfox = PolarfoxFactory.load(FACTORY_ADDRESS)
@@ -108,6 +108,7 @@ export function updateTokenDayData(token: Token, event: EthereumEvent): TokenDay
     tokenDayData = new TokenDayData(tokenDayID)
     tokenDayData.date = dayStartTimestamp
     tokenDayData.token = token.id
+    tokenDayData.priceAVAX = token.derivedAVAX.times(ONE_BD)
     tokenDayData.priceUSD = token.derivedAVAX.times(bundle.avaxPrice)
     tokenDayData.dailyVolumeToken = ZERO_BD
     tokenDayData.dailyVolumeAVAX = ZERO_BD
@@ -115,6 +116,7 @@ export function updateTokenDayData(token: Token, event: EthereumEvent): TokenDay
     tokenDayData.dailyTxns = ZERO_BI
     tokenDayData.totalLiquidityUSD = ZERO_BD
   }
+  tokenDayData.priceAVAX = token.derivedAVAX.times(ONE_BD)
   tokenDayData.priceUSD = token.derivedAVAX.times(bundle.avaxPrice)
   tokenDayData.totalLiquidityToken = token.totalLiquidity
   tokenDayData.totalLiquidityAVAX = token.totalLiquidity.times(token.derivedAVAX as BigDecimal)
